@@ -5,12 +5,18 @@ import icons from "../../constants/icons.js";
 
 function Ride(props) {
 
-     return <View style={styles.container}>
+    function ClickRide(id) {
+        console.log("Ride=" + id);
+        props.navigation.navigate("ride-detail");
+    }
+
+    return <View style={styles.container}>
         <FlatList data={json_rides}
             keyExtractor={(ride) => ride.ride_id}
             showsVerticalScrollIndicator={false}
             renderItem={({ item }) => {
-                return <TouchableOpacity style={styles.ride}>
+                return <TouchableOpacity style={styles.ride}
+                    onPress={() => ClickRide(item.ride_id)}>
                     <View style={styles.containerName}>
                         <Image source={icons.car} style={styles.car} />
                         <Text style={styles.name}>{item.passenger_name}</Text>
