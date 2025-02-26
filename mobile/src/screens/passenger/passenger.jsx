@@ -12,6 +12,7 @@ import {
 
 function Passenger(props) {
    
+    const userId = 1; // id. do usuario logado no app (vem do login)
     const [title, setTitle] = useState("");
     const [myLocation, setMyLocation] = useState("");
     const [pickupAddress, setPickupAddress] = useState("");
@@ -35,7 +36,7 @@ function Passenger(props) {
                 response[0].streetNumber + " - " +
                 response[0].district);
         }
-        console.log(response)
+        // console.log(response)
     }
 
     async function LoadScreen() {
@@ -79,6 +80,19 @@ function Passenger(props) {
         }
     }
 
+    async function AskForRide() {
+        const json = {
+            passenger_id: userId,
+            pickup_address: pickupAddress,
+            dropoff_address: dropoffAddress,
+            pickup_latitude: myLocation.latitude,
+            pickup_longitude: myLocation.longitude
+        }
+
+        console.log("Fazer POSt para o servidor: ", json);
+
+        props.navigation.goBack();
+    }
 
     useEffect(() => {
         LoadScreen();
@@ -134,7 +148,7 @@ function Passenger(props) {
                 <ActivityIndicator size="large" />
             </View>        
         }
-        <MyButton text="CONFIRMAR" theme="default" />
+        <MyButton text="CONFIRMAR" theme="default" onClick={AskForRide} />
     </View>
 }
 
