@@ -14,6 +14,8 @@ function Passenger(props) {
    
     const [title, setTitle] = useState("");
     const [myLocation, setMyLocation] = useState("");
+    const [pickupAddress, setPickupAddress] = useState("");
+    const [dropoffAddress, setDropoffAddress] = useState("");
 
     async function RequestRideFromUser() {
         // Acessa dados na API... 
@@ -22,16 +24,31 @@ function Passenger(props) {
         return response;
     }
 
+    async function RequestAddressName(lat, long) {
+        const response = await reverseGeocodeAsync({
+            latitude: lat,
+            longitude: long
+        });
+
+        if (response[0].street && response[0].streetNumber && response[0].district) {
+            setPickupAddress(response[0].street + ", " +
+                response[0].streetNumber + " - " +
+                response[0].district);
+        }
+        console.log(response)
+    }
+
     async function LoadScreen() {
         // buscar dados de corrida aberta na API para o usuario...
         const response = await RequestRideFromUser();
 
         if (!response.ride_id) {
 
-            // const location = { latitude: -23.561747, longitude: -46.656244 };
-            const location = await RequestPermissionAndGetLocation();
+            const location = { latitude: -23.561747, longitude: -46.656244 };
+            // const location = await RequestPermissionAndGetLocation();
 
             if (location.latitude) {
+                setTitle("Encontre a sua carona agora");
                 setMyLocation(location);
                 RequestAddressName(location.latitude, location.longitude);
             } else {
@@ -96,12 +113,14 @@ function Passenger(props) {
 
                 <View style={styles.footerFields}>
                     <Text>Origem</Text>
-                    <TextInput style={styles.input} />
+                    <TextInput style={styles.input} value={pickupAddress}
+                            onChangeText={(text) => setPickupAddress(text)} />
                 </View>
 
                 <View style={styles.footerFields}>
                     <Text>Destino</Text>
-                    <TextInput style={styles.input} />
+                    <TextInput style={styles.input} value={dropoffAddress}
+                            onChangeText={(text) => setDropoffAddress(text)} />
                 </View>
 
                 {/* <View style={styles.footerFields}>
