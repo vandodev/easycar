@@ -15,13 +15,31 @@ function Passenger(props) {
     const userId = 1; // id. do usuario logado no app (vem do login)
     const [title, setTitle] = useState("");
     const [myLocation, setMyLocation] = useState("");
+    const [status, setStatus] = useState("");
     const [pickupAddress, setPickupAddress] = useState("");
     const [dropoffAddress, setDropoffAddress] = useState("");
 
     async function RequestRideFromUser() {
         // Acessa dados na API... 
 
-        const response = {};      
+        // const response = {};   
+        
+        const response = {
+            ride_id: 1,
+            passenger_user_id: 1,
+            passenger_name: "Evandro Oliveira",
+            passenger_phone: "(11) 99999-9999",
+            pickup_address: "Praça Charles Miller - Pacaembu",
+            pickup_date: "2025-02-19",
+            pickup_latitude: "-23.543132",
+            pickup_longitude: "-46.665389",
+            dropoff_address: "Shopping Center Norte",
+            status: "P",
+            driver_user_id: null,
+            driver_name: null,
+            driver_phone: null
+        }
+
         return response;
     }
 
@@ -57,10 +75,16 @@ function Passenger(props) {
             }
 
         } else {           
+            setTitle(response.status == "P" ? "Aguardando uma carona..." : "Carona confirmada");
             setMyLocation({
                 latitude: Number(response.pickup_latitude),
                 longitude: Number(response.pickup_longitude)
-            });           
+            });
+            setPickupAddress(response.pickup_address);
+            setDropoffAddress(response.dropoff_address);
+            setStatus(response.status);
+            setRideId(response.ride_id);
+            setDriverName(response.driver_name + " - " + response.driver_phone);         
         }
     }
 
@@ -128,13 +152,17 @@ function Passenger(props) {
                 <View style={styles.footerFields}>
                     <Text>Origem</Text>
                     <TextInput style={styles.input} value={pickupAddress}
-                            onChangeText={(text) => setPickupAddress(text)} />
+                        onChangeText={(text) => setPickupAddress(text)}
+                        editable={status == "" ? true : false} 
+                     />
                 </View>
 
                 <View style={styles.footerFields}>
                     <Text>Destino</Text>
                     <TextInput style={styles.input} value={dropoffAddress}
-                            onChangeText={(text) => setDropoffAddress(text)} />
+                        onChangeText={(text) => setDropoffAddress(text)}
+                        editable={status == "" ? true : false} 
+                    />
                 </View>
 
                 {/* <View style={styles.footerFields}>
@@ -148,7 +176,11 @@ function Passenger(props) {
                 <ActivityIndicator size="large" />
             </View>        
         }
-        <MyButton text="CONFIRMAR" theme="default" onClick={AskForRide} />
+        
+        {status == "" && <MyButton text="CONFIRMAR" theme="default"/>}
+
+        {status == "P" && <MyButton text="CANCELAR" theme="red"/>}
+
     </View>
 }
 
