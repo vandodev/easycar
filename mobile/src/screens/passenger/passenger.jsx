@@ -18,6 +18,7 @@ function Passenger(props) {
     const [status, setStatus] = useState("");
     const [pickupAddress, setPickupAddress] = useState("");
     const [dropoffAddress, setDropoffAddress] = useState("");
+    const [rideId, setRideId] = useState(0);
 
     async function RequestRideFromUser() {
         // Acessa dados na API... 
@@ -118,6 +119,16 @@ function Passenger(props) {
         props.navigation.goBack();
     }
 
+    async function CancelRide() {
+        const json = {
+            passenger_user_id: userId,
+            ride_id: rideId
+        };
+
+        console.log("Cancelar carona", json);
+        props.navigation.goBack();
+    }
+
     useEffect(() => {
         LoadScreen();
     }, []);
@@ -177,9 +188,9 @@ function Passenger(props) {
             </View>        
         }
         
-        {status == "" && <MyButton text="CONFIRMAR" theme="default"/>}
+        {status == "" && <MyButton text="CONFIRMAR" theme="default" onClick={AskForRide} />}
 
-        {status == "P" && <MyButton text="CANCELAR" theme="red"/>}
+        {status == "P" && <MyButton text="CANCELAR" theme="red" onClick={CancelRide}/>}
 
     </View>
 }
