@@ -35,10 +35,10 @@ function Passenger(props) {
             pickup_latitude: "-23.543132",
             pickup_longitude: "-46.665389",
             dropoff_address: "Shopping Center Norte",
-            status: "P",
-            driver_user_id: null,
-            driver_name: null,
-            driver_phone: null
+            status: "A",
+            driver_user_id: 2,
+            driver_name: "João Martins",
+            driver_phone: "(11) 5555-5555"
         }
 
         return response;
@@ -129,6 +129,17 @@ function Passenger(props) {
         props.navigation.goBack();
     }
 
+    async function FinishRide() {
+        const json = {
+            passenger_user_id: userId,
+            ride_id: rideId
+        };
+
+        console.log("Finalizar carona", json);
+
+        props.navigation.goBack();
+    }
+
     useEffect(() => {
         LoadScreen();
     }, []);
@@ -191,6 +202,8 @@ function Passenger(props) {
         {status == "" && <MyButton text="CONFIRMAR" theme="default" onClick={AskForRide} />}
 
         {status == "P" && <MyButton text="CANCELAR" theme="red" onClick={CancelRide}/>}
+
+        {status == "A" && <MyButton text="FINALIZAR CARONA" theme="red" onClick={FinishRide} />}
 
     </View>
 }
