@@ -19,6 +19,7 @@ function Passenger(props) {
     const [pickupAddress, setPickupAddress] = useState("");
     const [dropoffAddress, setDropoffAddress] = useState("");
     const [rideId, setRideId] = useState(0);
+    const [driverName, setDriverName] = useState("");
 
     async function RequestRideFromUser() {
         // Acessa dados na API... 
@@ -187,10 +188,14 @@ function Passenger(props) {
                     />
                 </View>
 
-                {/* <View style={styles.footerFields}>
-                    <Text>Motorista</Text>
-                    <TextInput style={styles.input} />
-                </View> */}
+                {
+                    status == "A" && <View style={styles.footerFields}>
+                        <Text>Motorista</Text>
+                        <TextInput style={styles.input} value={driverName}
+                            editable={false} />
+                    </View>
+                }
+
             </View>       
         </> 
         
