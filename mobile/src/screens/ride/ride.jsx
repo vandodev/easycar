@@ -10,8 +10,10 @@ function Ride(props) {
     const [rides, setRides] = useState([]);
 
     function ClickRide(id) {
-        // console.log("Ride=" + id);
-        props.navigation.navigate("ride-detail");
+        props.navigation.navigate("ride-detail", {
+            rideId: id,
+            userId: userId
+        });
     }
 
     async function RequestRides() {

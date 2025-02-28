@@ -8,6 +8,9 @@ import icons from "../../constants/icons.js";
 
 function RideDetail(props) {
 
+    const rideId = props.route.params.rideId;
+    const userId = props.route.params.userId;
+
     const [myLocation, setMyLocation] = useState({
         latitude: 20,
         longitude: 20
