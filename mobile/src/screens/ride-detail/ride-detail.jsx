@@ -46,6 +46,17 @@ function RideDetail(props) {
 
     }
 
+    async function AcceptRide() {
+        const json = {
+            driver_user_id: userId,
+            ride_id: rideId
+        }
+
+        console.log("Aceitar", json);
+
+        props.navigation.goBack();
+    }
+
     useEffect(() => {
         RequestRideDetail();
     }, []);
@@ -93,7 +104,11 @@ function RideDetail(props) {
                 />
             </View>
         </View>
-        <MyButton text="ACEITAR" />
+        
+        {ride.status == "P" && <MyButton text="ACEITAR" theme="default"
+            onClick={AcceptRide} />            
+        }
+        
     </View>
 }
 
