@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { FlatList, Image, Text, TouchableOpacity, View } from "react-native";
 import { styles } from "./ride.style.js";
 import { json_rides } from "../../constants/dados.js";
@@ -5,10 +6,23 @@ import icons from "../../constants/icons.js";
 
 function Ride(props) {
 
+    const userId = 2; // id. do usuario logado no app (vem do login)
+    const [rides, setRides] = useState([]);
+
     function ClickRide(id) {
-        console.log("Ride=" + id);
+        // console.log("Ride=" + id);
         props.navigation.navigate("ride-detail");
     }
+
+    async function RequestRides() {
+        // Acessar a API em busca das caronas...
+
+        setRides(json_rides);
+    }
+
+    useEffect(() => {
+        RequestRides();
+    }, []);
 
     return <View style={styles.container}>
         <FlatList data={json_rides}
