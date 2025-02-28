@@ -32,11 +32,11 @@ function RideDetail(props) {
             pickup_latitude: "-23.543132",
             pickup_longitude: "-46.665389",
             dropoff_address: "Shopping Center Norte",
-            status: "P",
-            driver_user_id: null,
-            driver_name: null,
-            driver_phone: null
-        }      
+            status: "A",
+            driver_user_id: 2,
+            driver_name: "João Martins",
+            driver_phone: "(11) 5555-5555"
+        }    
 
        
         if (response.passenger_name) {
@@ -53,6 +53,17 @@ function RideDetail(props) {
         }
 
         console.log("Aceitar", json);
+
+        props.navigation.goBack();
+    }
+
+    async function CancelRide() {
+        const json = {
+            driver_user_id: userId,
+            ride_id: rideId
+        }
+
+        console.log("Cancelar", json);
 
         props.navigation.goBack();
     }
@@ -108,7 +119,11 @@ function RideDetail(props) {
         {ride.status == "P" && <MyButton text="ACEITAR" theme="default"
             onClick={AcceptRide} />            
         }
-        
+
+        {ride.status == "A" && <MyButton text="CANCELAR" theme="red"
+            onClick={CancelRide} />
+        }
+
     </View>
 }
 
