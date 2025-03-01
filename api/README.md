@@ -3,7 +3,7 @@ Rotas - Projeto EasyCar
 ----------------------------------------
 
 
-[ ] Consultar se existe corrida pendente (hoje) para o usuario logado
+[X] Consultar se existe corrida pendente (hoje) para o usuario logado
     GET -> /rides
     Filtros: passenger_user_id, pickup_date, ride_id, driver_user_id, status
 
