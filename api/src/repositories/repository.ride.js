@@ -40,5 +40,18 @@ async function List(passenger_user_id, pickup_date, ride_id, driver_user_id, sta
     return rides;
 }
 
+async function Insert(passenger_user_id, pickup_address,
+    pickup_latitude, pickup_longitude, dropoff_address) {
 
-export default { List };
+    let sql = `insert into rides(passenger_user_id, pickup_address,
+        pickup_latitude, pickup_longitude, dropoff_address, pickup_date, status)
+        values(?, ?, ?, ?, ?, CURRENT_DATE, 'P') returning ride_id`;
+
+    const ride = await execute(sql, [passenger_user_id, pickup_address,
+        pickup_latitude, pickup_longitude, dropoff_address]);
+
+    return ride[0];
+}
+
+
+export default { List, Insert };

@@ -7,7 +7,7 @@ Rotas - Projeto EasyCar
     GET -> /rides
     Filtros: passenger_user_id, pickup_date, ride_id, driver_user_id, status
 
-[ ] Cadastrar novas caronas
+[x] Cadastrar novas caronas
     POST -> /rides
 
 [ ] Cancelar um pedido de carona (excluir o pedido)

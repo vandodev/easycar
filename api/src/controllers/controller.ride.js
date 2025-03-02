@@ -19,4 +19,23 @@ async function List(req, res) {
     }
 }
 
-export default { List };
+
+async function Insert(req, res) {
+
+    try {
+        const passenger_user_id = req.body.passenger_user_id;
+        const pickup_address = req.body.pickup_address;
+        const pickup_latitude = req.body.pickup_latitude;
+        const pickup_longitude = req.body.pickup_longitude;
+        const dropoff_address = req.body.dropoff_address;
+
+        const rides = await serviceRide.Insert(passenger_user_id, pickup_address,
+            pickup_latitude, pickup_longitude, dropoff_address);
+
+        res.status(201).json(rides);
+    } catch (error) {
+        res.status(500).json({ error });
+    }
+}
+
+export default { List, Insert };
