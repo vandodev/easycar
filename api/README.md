@@ -13,7 +13,7 @@ Rotas - Projeto EasyCar
 [x] Cancelar um pedido de carona (excluir o pedido)
     DELETE -> /rides/123
 
-[ ] Finalizar uma carona que foi concluida
+[x] Finalizar uma carona que foi concluida
     PUT -> /rides/123/finish
     Body: passenger_user_id
 
