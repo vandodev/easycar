@@ -17,4 +17,11 @@ async function Insert(passenger_user_id, pickup_address,
     return ride;
 }
 
-export default { List, Insert };
+async function Delete(ride_id) {
+
+    const ride = await repositoryRide.Delete(ride_id);
+
+    return ride;
+}
+
+export default { List, Insert, Delete };

@@ -53,5 +53,13 @@ async function Insert(passenger_user_id, pickup_address,
     return ride[0];
 }
 
+async function Delete(ride_id) {
 
-export default { List, Insert };
+    let sql = `delete from rides where ride_id = ?`;
+
+    await execute(sql, [ride_id]);
+
+    return { ride_id }
+}
+
+export default { List, Insert, Delete };

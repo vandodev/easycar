@@ -10,7 +10,7 @@ Rotas - Projeto EasyCar
 [x] Cadastrar novas caronas
     POST -> /rides
 
-[ ] Cancelar um pedido de carona (excluir o pedido)
+[x] Cancelar um pedido de carona (excluir o pedido)
     DELETE -> /rides/123
 
 [ ] Finalizar uma carona que foi concluida
