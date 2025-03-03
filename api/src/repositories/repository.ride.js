@@ -92,4 +92,13 @@ async function ListForDriver(driver_user_id) {
     return rides;
 }
 
-export default { List, Insert, Delete, Finish, ListForDriver };
+async function Accept(ride_id, driver_user_id) {
+
+    let sql = `update rides set status = 'A', driver_user_id = ? where ride_id = ?`;
+
+    await execute(sql, [driver_user_id, ride_id]);
+
+    return { ride_id }
+}
+
+export default { List, Insert, Delete, Finish, ListForDriver, Accept };

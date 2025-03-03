@@ -38,4 +38,11 @@ async function ListForDriver(driver_user_id) {
     return rides;
 }
 
-export default { List, Insert, Delete, Finish, ListForDriver };
+async function Accept(ride_id, driver_user_id) {
+
+    const ride = await repositoryRide.Accept(ride_id, driver_user_id);
+
+    return ride;
+}
+
+export default { List, Insert, Delete, Finish, ListForDriver, Accept };

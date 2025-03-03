@@ -20,10 +20,10 @@ Rotas - Projeto EasyCar
 [x] Consultar as corridas para o motorista (corridas dele + corridas pendentes sem motorista)
     GET -> /rides/drivers/456
 
-[ ] Consultar todos os dados de uma determinada corrida
+[x] Consultar todos os dados de uma determinada corrida
     GET -> /rides/123
 
-[ ] Motorista aceitar uma carona
+[x] Motorista aceitar uma carona
     PUT -> /rides/123/accept
     Body: driver_user_id  
 

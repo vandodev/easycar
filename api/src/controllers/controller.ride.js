@@ -92,4 +92,18 @@ async function ListDetail(req, res) {
     }
 }
 
-export default { List, Insert, Delete, Finish, ListForDriver, ListDetail };
+async function Accept(req, res) {
+
+    try {
+        const ride_id = req.params.ride_id;
+        const driver_user_id = req.body.driver_user_id;
+
+        const ride = await serviceRide.Accept(ride_id, driver_user_id);
+
+        res.status(200).json(ride);
+    } catch (error) {
+        res.status(500).json({ error });
+    }
+}
+
+export default { List, Insert, Delete, Finish, ListForDriver, ListDetail, Accept };
