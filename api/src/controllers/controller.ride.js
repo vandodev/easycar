@@ -79,4 +79,17 @@ async function ListForDriver(req, res) {
     }
 }
 
-export default { List, Insert, Delete, Finish, ListForDriver };
+async function ListDetail(req, res) {
+
+    try {
+        const ride_id = req.params.ride_id;
+
+        const rides = await serviceRide.List(null, null, ride_id, null, null);
+
+        res.status(200).json(rides[0]);
+    } catch (error) {
+        res.status(500).json({ error });
+    }
+}
+
+export default { List, Insert, Delete, Finish, ListForDriver, ListDetail };

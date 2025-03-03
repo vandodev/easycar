@@ -17,7 +17,7 @@ Rotas - Projeto EasyCar
     PUT -> /rides/123/finish
     Body: passenger_user_id
 
-[ ] Consultar as corridas para o motorista (corridas dele + corridas pendentes sem motorista)
+[x] Consultar as corridas para o motorista (corridas dele + corridas pendentes sem motorista)
     GET -> /rides/drivers/456
 
 [ ] Consultar todos os dados de uma determinada corrida
