@@ -31,4 +31,11 @@ async function Finish(ride_id, passenger_user_id) {
     return ride;
 }
 
-export default { List, Insert, Delete, Finish };
+async function ListForDriver(driver_user_id) {
+
+    const rides = await repositoryRide.ListForDriver(driver_user_id);
+
+    return rides;
+}
+
+export default { List, Insert, Delete, Finish, ListForDriver };

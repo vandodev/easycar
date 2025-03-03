@@ -71,4 +71,25 @@ async function Finish(ride_id, passenger_user_id) {
     return { ride_id }
 }
 
-export default { List, Insert, Delete, Finish };
+async function ListForDriver(driver_user_id) {
+
+    let sql = `select r.*, u.name as passenger_name, u.phone as passenger_phone                
+    from rides r
+    join users u on (u.user_id = r.passenger_user_id)
+    where r.pickup_date = CURRENT_DATE
+    and  r.driver_user_id = ? 
+    
+    UNION
+    
+    select r.*, u.name as passenger_name, u.phone as passenger_phone                
+    from rides r
+    join users u on (u.user_id = r.passenger_user_id)
+    where r.pickup_date = CURRENT_DATE
+    and  r.driver_user_id is null 
+    `
+
+    const rides = await execute(sql, [driver_user_id]);
+    return rides;
+}
+
+export default { List, Insert, Delete, Finish, ListForDriver };

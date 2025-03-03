@@ -65,4 +65,18 @@ async function Finish(req, res) {
     }
 }
 
-export default { List, Insert, Delete, Finish };
+async function ListForDriver(req, res) {
+
+    try {
+
+        const driver_user_id = req.params.driver_user_id;
+
+        const rides = await serviceRide.ListForDriver(driver_user_id);
+
+        res.status(200).json(rides);
+    } catch (error) {
+        res.status(500).json({ error });
+    }
+}
+
+export default { List, Insert, Delete, Finish, ListForDriver };
