@@ -1,9 +1,9 @@
 import repositoryRide from "../repositories/repository.ride.js";
 
-async function List(passenger_user_id, pickup_date, ride_id, driver_user_id, status) {
+async function List(passenger_user_id, pickup_date, ride_id, driver_user_id, status, status_not) {
 
     const rides = await repositoryRide.List(passenger_user_id, pickup_date,
-        ride_id, driver_user_id, status);
+        ride_id, driver_user_id, status, status_not);
 
     return rides;
 }

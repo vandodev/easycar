@@ -1,6 +1,6 @@
 import { execute } from "../database/sqlite.js";
 
-async function List(passenger_user_id, pickup_date, ride_id, driver_user_id, status) {
+async function List(passenger_user_id, pickup_date, ride_id, driver_user_id, status, status_not) {
 
     let filtro = [];
 
@@ -34,6 +34,11 @@ async function List(passenger_user_id, pickup_date, ride_id, driver_user_id, sta
     if (status) {
         sql = sql + " and r.status = ? ";
         filtro.push(status);
+    }
+
+    if (status_not) {
+        sql = sql + " and r.status <> ? ";
+        filtro.push(status_not);
     }
 
     const rides = await execute(sql, filtro);
