@@ -27,7 +27,7 @@ Rotas - Projeto EasyCar
     PUT -> /rides/123/accept
     Body: driver_user_id  
 
-[ ] Motorista cancelar uma carona
+[x] Motorista cancelar uma carona
     PUT -> /rides/123/cancel
 
 

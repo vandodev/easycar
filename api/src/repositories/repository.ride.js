@@ -101,4 +101,13 @@ async function Accept(ride_id, driver_user_id) {
     return { ride_id }
 }
 
-export default { List, Insert, Delete, Finish, ListForDriver, Accept };
+async function Cancel(ride_id) {
+
+    let sql = `update rides set status = 'P', driver_user_id = null where ride_id = ?`;
+
+    await execute(sql, [ride_id]);
+
+    return { ride_id }
+}
+
+export default { List, Insert, Delete, Finish, ListForDriver, Accept, Cancel };

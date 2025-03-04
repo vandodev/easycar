@@ -106,4 +106,17 @@ async function Accept(req, res) {
     }
 }
 
-export default { List, Insert, Delete, Finish, ListForDriver, ListDetail, Accept };
+async function Cancel(req, res) {
+
+    try {
+        const ride_id = req.params.ride_id;
+
+        const ride = await serviceRide.Cancel(ride_id);
+
+        res.status(200).json(ride);
+    } catch (error) {
+        res.status(500).json({ error });
+    }
+}
+
+export default { List, Insert, Delete, Finish, ListForDriver, ListDetail, Accept, Cancel };
