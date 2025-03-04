@@ -11,6 +11,14 @@ async function List(passenger_user_id, pickup_date, ride_id, driver_user_id, sta
 async function Insert(passenger_user_id, pickup_address,
     pickup_latitude, pickup_longitude, dropoff_address) {
 
+    // Validacao: O usuario so pode pedir uma carona por vez
+    const dt = new Date().toISOString("pt-BR", { timeZone: "America/Sao_Paulo" }).substring(0, 10);
+    const searchRides = await List(passenger_user_id, dt, null, null, null, "F");
+
+    if (searchRides.length > 0)
+        throw "Você já possui uma carona não finalizada no dia de hoje";
+    //------------
+
     const ride = await repositoryRide.Insert(passenger_user_id, pickup_address,
         pickup_latitude, pickup_longitude, dropoff_address);
 
