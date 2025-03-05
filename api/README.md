@@ -36,5 +36,5 @@ Business Rules (Regras de Negocio)
 
 [x] O usuario so pode pedir uma carona por vez
 
-[ ] O motorista só pode aceitar uma carona por vez
+[x] O motorista só pode aceitar uma carona por vez
 
