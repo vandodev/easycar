@@ -10,6 +10,8 @@ import {
     reverseGeocodeAsync
 } from "expo-location";
 
+import { api, HandleError } from "../../constants/api.js";
+
 function Passenger(props) {
    
     const userId = 1; // id. do usuario logado no app (vem do login)
@@ -21,28 +23,27 @@ function Passenger(props) {
     const [rideId, setRideId] = useState(0);
     const [driverName, setDriverName] = useState("");
 
-    async function RequestRideFromUser() {
-        // Acessa dados na API... 
+  async function RequestRideFromUser() {
 
-        // const response = {};   
-        
-        const response = {
-            ride_id: 1,
-            passenger_user_id: 1,
-            passenger_name: "Evandro Oliveira",
-            passenger_phone: "(11) 99999-9999",
-            pickup_address: "Praça Charles Miller - Pacaembu",
-            pickup_date: "2025-02-19",
-            pickup_latitude: "-23.543132",
-            pickup_longitude: "-46.665389",
-            dropoff_address: "Shopping Center Norte",
-            status: "A",
-            driver_user_id: 2,
-            driver_name: "João Martins",
-            driver_phone: "(11) 5555-5555"
+        try {
+
+            const response = await api.get("/rides", {
+                params: {
+                    passenger_user_id: userId,
+                    pickup_date: new Date().toISOString("pt-BR", { timeZone: "America/Sao_Paulo" }).substring(0, 10),
+                    status_not: "F"
+                }
+            });
+
+            if (response.data[0])
+                return response.data[0];
+            else
+                return {};
+
+        } catch (error) {
+            HandleError(error);
+            props.navigation.goBack();
         }
-
-        return response;
     }
 
     async function RequestAddressName(lat, long) {
