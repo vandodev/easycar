@@ -108,17 +108,25 @@ function Passenger(props) {
     }
 
     async function AskForRide() {
-        const json = {
-            passenger_id: userId,
-            pickup_address: pickupAddress,
-            dropoff_address: dropoffAddress,
-            pickup_latitude: myLocation.latitude,
-            pickup_longitude: myLocation.longitude
+        try {
+
+            const json = {
+                passenger_user_id: userId,
+                pickup_address: pickupAddress,
+                dropoff_address: dropoffAddress,
+                pickup_latitude: myLocation.latitude,
+                pickup_longitude: myLocation.longitude
+            }
+
+            const response = await api.post("/rides", json);
+
+            if (response.data)
+                props.navigation.goBack();
+
+        } catch (error) {
+            HandleError(error);
         }
-
-        console.log("Fazer POSt para o servidor: ", json);
-
-        props.navigation.goBack();
+  
     }
 
     async function CancelRide() {
