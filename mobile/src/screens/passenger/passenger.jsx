@@ -130,14 +130,17 @@ function Passenger(props) {
     }
 
     async function CancelRide() {
-        const json = {
-            passenger_user_id: userId,
-            ride_id: rideId
-        };
-
-        console.log("Cancelar carona", json);
-        props.navigation.goBack();
-    }
+   
+           try {
+               const response = await api.delete("/rides/" + rideId);
+   
+               if (response.data)
+                   props.navigation.goBack();
+   
+           } catch (error) {
+               HandleError(error);
+           }
+       }
 
     async function FinishRide() {
         const json = {
