@@ -62,6 +62,23 @@ function RideDetail(props) {
         props.navigation.goBack();
     }
 
+     async function CancelRide() {
+        const json = {
+            driver_user_id: userId,
+        }
+
+        try {
+            const response = await api.put("rides/" + rideId + "/cancel", json);
+
+            if (response.data)
+                props.navigation.goBack();
+
+        } catch (error) {
+            HandleError(error);
+            props.navigation.goBack();
+        }
+    }
+
     useEffect(() => {
         RequestRideDetail();
     }, []);
