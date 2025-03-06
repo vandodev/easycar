@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import { useFocusEffect } from "@react-navigation/native";
 import { FlatList, Image, Text, TouchableOpacity, View } from "react-native";
 import { styles } from "./ride.style.js";
 import icons from "../../constants/icons.js";
@@ -29,9 +30,9 @@ function Ride(props) {
         }
     }
 
-    useEffect(() => {
-        RequestRides();
-    }, []);
+    useFocusEffect(useCallback(() => {
+          RequestRides();
+      }, []));
 
     return <View style={styles.container}>
         <FlatList data={rides}
