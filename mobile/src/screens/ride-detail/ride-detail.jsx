@@ -37,12 +37,18 @@ function RideDetail(props) {
     async function AcceptRide() {
         const json = {
             driver_user_id: userId,
-            ride_id: rideId
         }
 
-        console.log("Aceitar", json);
+        try {
+            const response = await api.put("rides/" + rideId + "/accept", json);
 
-        props.navigation.goBack();
+            if (response.data)
+                props.navigation.goBack();
+
+        } catch (error) {
+            HandleError(error);
+            props.navigation.goBack();
+        }
     }
 
     async function CancelRide() {
