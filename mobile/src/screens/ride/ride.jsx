@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { FlatList, Image, Text, TouchableOpacity, View } from "react-native";
 import { styles } from "./ride.style.js";
-import { json_rides } from "../../constants/dados.js";
 import icons from "../../constants/icons.js";
+import { api, HandleError } from "../../constants/api.js";
 
 function Ride(props) {
 
@@ -17,9 +17,16 @@ function Ride(props) {
     }
 
     async function RequestRides() {
-        // Acessar a API em busca das caronas...
+ 
+        try {
+            const response = await api.get("/rides/drivers/" + userId);
 
-        setRides(json_rides);
+            if (response.data)
+                setRides(response.data);
+
+        } catch (error) {
+            HandleError(error);
+        }
     }
 
     useEffect(() => {
@@ -27,14 +34,16 @@ function Ride(props) {
     }, []);
 
     return <View style={styles.container}>
-        <FlatList data={json_rides}
+        <FlatList data={rides}
             keyExtractor={(ride) => ride.ride_id}
             showsVerticalScrollIndicator={false}
             renderItem={({ item }) => {
                 return <TouchableOpacity style={styles.ride}
                     onPress={() => ClickRide(item.ride_id)}>
                     <View style={styles.containerName}>
-                        <Image source={icons.car} style={styles.car} />
+                        {
+                            item.driver_user_id == userId && <Image source={icons.car} style={styles.car} />
+                        }
                         <Text style={styles.name}>{item.passenger_name}</Text>
                     </View>
                     <Text style={styles.address}>Origem: {item.pickup_address}</Text>
