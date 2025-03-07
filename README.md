@@ -41,7 +41,11 @@ Aplicativo para carona, o usuario pode pedir e oferever carona
 <h3>Layout na aplicação mobile (clique na imagem para ter uma melhor visualização)</h3>
 
 <div align="center">  
-<img src="https://github.com/user-attachments/assets/" height="270" width="130" />
+    <img src="https://github.com/user-attachments/assets/f40f60ea-354b-4587-9ce7-4f35df4d77b3" height="270" width="130" />
+    <img src="https://github.com/user-attachments/assets/ed232564-0e32-4dbb-9243-a59a6d274606" height="270" width="130" />
+    <img src="https://github.com/user-attachments/assets/96f86618-6f3b-480a-a7eb-31acc2cc6d36" height="270" width="130" />
+    <img src="https://github.com/user-attachments/assets/d615318f-8510-4a81-8a93-93008ce77c49" height="270" width="130" />
+    <img src="https://github.com/user-attachments/assets/a04843ed-29c7-4bcf-a063-71d07d468813" height="270" width="130" />  
 </div>
 
 

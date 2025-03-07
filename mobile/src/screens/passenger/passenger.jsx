@@ -14,7 +14,7 @@ import { api, HandleError } from "../../constants/api.js";
 
 function Passenger(props) {
    
-    const userId = 2; // id. do usuario logado no app (vem do login)
+    const userId = 3; // id. do usuario logado no app (vem do login)
     const [title, setTitle] = useState("");
     const [myLocation, setMyLocation] = useState("");
     const [status, setStatus] = useState("");
