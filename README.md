@@ -40,28 +40,38 @@ Aplicativo para carona, o usuario pode pedir e oferever carona
 
 <h3>Layout na aplicação mobile (clique na imagem para ter uma melhor visualização)</h3>
 
-<div align="center">  
-    <img src="https://github.com/user-attachments/assets/f40f60ea-354b-4587-9ce7-4f35df4d77b3" height="270" width="130" />
-    <img src="https://github.com/user-attachments/assets/ed232564-0e32-4dbb-9243-a59a6d274606" height="270" width="130" />
-    <img src="https://github.com/user-attachments/assets/96f86618-6f3b-480a-a7eb-31acc2cc6d36" height="270" width="130" />
-    <img src="https://github.com/user-attachments/assets/d615318f-8510-4a81-8a93-93008ce77c49" height="270" width="130" />
-    <img src="https://github.com/user-attachments/assets/a04843ed-29c7-4bcf-a063-71d07d468813" height="270" width="130" />  
-</div>
+<h4>Telas passageiro</h4>
+<img src="https://github.com/user-attachments/assets/c3399935-fcce-40fc-bbb4-024aa7d60cdc" height="270" width="130" />
+<img src="https://github.com/user-attachments/assets/db8232ad-c1e2-4b06-9bae-197f00c76f43" height="270" width="130" />
+<img src="https://github.com/user-attachments/assets/35c421bc-b6d5-4615-8547-be2368b58912" height="270" width="130" />
+<img src="https://github.com/user-attachments/assets/57865d9f-9d4b-4c23-ab94-41cb4dbca44d" height="270" width="130" />
+
+
+<h4>Telas Motorista</h4>
+<img src="https://github.com/user-attachments/assets/d694e614-3c22-4cec-bc50-5f29bdf68466" height="270" width="130" />
+<img src="https://github.com/user-attachments/assets/2007fe48-9610-48d0-b8eb-7ddcd54a44bb" height="270" width="130" />
+<img src="https://github.com/user-attachments/assets/ec00bfe4-11df-4354-aa32-f31d8238f9a2" height="270" width="130" />
+<img src="https://github.com/user-attachments/assets/368cf698-dada-444e-a1f9-91d8705da6c5" height="270" width="130" />
+
 
 
 ### Melhorias Mobile
 
 - [ ] Criar login.
+- [ ] Criar tela de cadastro.
 
 
 ### Melhorias api
 
-- [ ] ...
+- [ ] Criar login.
+- [ ] Criar cadastro.
+- [ ] Alterar id para não ficar sequencial.
 
 
 ### Melhorias web
 
 - [ ] Criar sistema web.
+- [ ] Listar usuários.
 
 
 
