@@ -140,17 +140,22 @@ function Passenger(props) {
            } catch (error) {
                HandleError(error);
            }
-       }
+    }
 
     async function FinishRide() {
         const json = {
             passenger_user_id: userId,
-            ride_id: rideId
         };
 
-        console.log("Finalizar carona", json);
+        try {
+            const response = await api.put("/rides/" + rideId + "/finish", json);
 
-        props.navigation.goBack();
+            if (response.data)
+                props.navigation.goBack();
+
+        } catch (error) {
+            HandleError(error);
+        }
     }
 
     useEffect(() => {
